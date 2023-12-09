@@ -1,5 +1,6 @@
 <template>
   <div style="display: grid; padding: 2px; margin: 2px">
+  <h3>Scale upto 63500 Kgs  </h3>
     <p class="my-1 pa-0 font-weight-bold text-h6">Steer Axles</p>
     <p
       v-if="steer_axles_information.message !== undefined"
@@ -130,7 +131,7 @@ export default {
         this.actual_weight_at_steer = this.at_steer_axles_value
       } else if (this.at_steer_axles_value < this.legal_steer_axles_limit) {
         this.steer_axles_information.message = `Steer axle under weight by ${
-          5500 - this.at_steer_axles_value
+          this.legal_steer_axles_limit - this.at_steer_axles_value
         } Kgs`
         this.steer_axles_information.color = 'green'
         this.actual_weight_at_steer = this.at_steer_axles_value
