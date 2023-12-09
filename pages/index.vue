@@ -13,7 +13,7 @@
       {{ steer_axles_information.message }}
     </p>
     <p v-if="steer_axles_information.message !== undefined">
-      Steering axles weight is {{ actual_weight_at_steer }}
+      Steer axle weight is {{ actual_weight_at_steer }}
     </p>
     <p class="pa-0 my-2 font-weight-bold">Drive Axles</p>
     <v-text-field
@@ -28,7 +28,7 @@
       {{ drive_axles_information.message }}
     </p>
     <p v-if="drive_axles_information.message !== undefined">
-      Drives axle weight is {{ actual_weight_at_drive }}
+      Drive axles weight is {{ actual_weight_at_drive }}
     </p>
     <p class="my-2 pa-0 font-weight-bold">Bridge Axles</p>
     <v-text-field
@@ -121,8 +121,8 @@ export default {
         } Kgs`
         this.steer_axles_information.color = 'green'
         this.actual_weight_at_steer = this.at_steer_axles_value
-      } else if (this.at_steer_axles_value == this.legal_steer_axles_limit) {
-        this.steer_axles_information.message = `Steer axle correct weight`
+      } else if (this.at_steer_axles_value === this.legal_steer_axles_limit) {
+        this.steer_axles_information.message = `Steer axle weight ok`
         this.steer_axles_information.color = 'green'
         this.actual_weight_at_steer = this.legal_steer_axles_limit
       }
@@ -136,21 +136,21 @@ export default {
       let expected_weight_limit =
         this.legal_drive_axles_limit + this.actual_weight_at_steer
       if (this.at_drive_axles_value > expected_weight_limit) {
-        this.drive_axles_information.message = `Drive axles over by ${
+        this.drive_axles_information.message = `Drive axles over weight by ${
           this.at_drive_axles_value - expected_weight_limit
         } Kgs`
         this.drive_axles_information.color = 'red'
         this.actual_weight_at_drive =
           this.at_drive_axles_value - this.at_steer_axles_value
       } else if (this.at_drive_axles_value < expected_weight_limit) {
-        this.drive_axles_information.message = `Drive axles under by ${
+        this.drive_axles_information.message = `Drive axles under weight by ${
           expected_weight_limit - this.at_drive_axles_value
         } Kgs`
         this.drive_axles_information.color = 'green'
         this.actual_weight_at_drive =
           this.at_drive_axles_value - this.at_steer_axles_value
-      } else if ((this.at_drive_axles_value = expected_weight_limit)) {
-        this.drive_axles_information.message = 'Drive axles are correct'
+      } else if ((this.at_drive_axles_value === expected_weight_limit)) {
+        this.drive_axles_information.message = 'Drive axles weight ok'
         this.drive_axles_information.color = 'green'
         this.actual_weight_at_drive = this.legal_drive_axles_limit
       }
@@ -165,7 +165,7 @@ export default {
         this.actual_weight_at_steer +
         this.actual_weight_at_drive
       if (this.at_bridge_axles_value > expected_weight_limit) {
-        this.bridge_axles_information.message = `Bridge axles over by ${
+        this.bridge_axles_information.message = `Bridge axles over weight by ${
           this.at_bridge_axles_value - expected_weight_limit
         } Kgs`
         this.bridge_axles_information.color = 'red'
@@ -174,7 +174,7 @@ export default {
           this.actual_weight_at_drive -
           this.actual_weight_at_steer
       } else if (this.at_bridge_axles_value < expected_weight_limit) {
-        this.bridge_axles_information.message = `Bridge axles are under unweight by ${
+        this.bridge_axles_information.message = `Bridge axles under weight by ${
           expected_weight_limit - this.at_bridge_axles_value
         } Kgs`
         ;(this.bridge_axles_information.color = 'green'),
@@ -182,8 +182,8 @@ export default {
             this.at_bridge_axles_value -
             this.actual_weight_at_drive -
             this.actual_weight_at_steer)
-      } else if ((this.at_bridge_axles_value = expected_weight_limit)) {
-        ;(this.bridge_axles_information.message = 'Bridge axle is correct'),
+      } else if ((this.at_bridge_axles_value === expected_weight_limit)) {
+        ;(this.bridge_axles_information.message = 'Bridge axles weight ok'),
           (this.bridge_axles_information.color = 'green')
         this.actual_weight_at_bridge = this.legal_bridge_axles_limit
       }
@@ -219,7 +219,7 @@ export default {
           this.actual_weight_at_drive -
           this.actual_weight_at_steer
       } else if (this.at_pup_axles_value === expected_weight_limit) {
-        this.pup_axles_information.message = 'Pup weight correct'
+        this.pup_axles_information.message = 'Pup axle weight ok'
         this.pup_axles_information.color = 'green'
         this.actual_weight_at_pup = this.legal_pup_axles_limit
       }
