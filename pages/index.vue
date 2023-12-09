@@ -3,15 +3,16 @@
     <p class="my-1 pa-0 font-weight-bold text-h6">Steer Axles</p>
     <p
       v-if="steer_axles_information.message !== undefined"
-      :class="`${steer_axles_information.color}--text font-weight-bold my-0 `"
+      :class="`${steer_axles_information.color}--text font-weight-bold my-0 text-h6 `"
     >
       {{ steer_axles_information.message }}
     </p>
-    <p v-if="steer_axles_information.message !== undefined" class="mt-0 pa-0" >
-      Steer axle weight is {{ actual_weight_at_steer }}
+    <p v-if="steer_axles_information.message !== undefined" class=" text-body-1 " >
+      Steer axle weight is <span class="font-weight-bold" >{{ actual_weight_at_steer }}</span>
     </p>
     <v-text-field
       outlined
+      type="number"
       label="Only steer axles"
       class="text-h4 ma-0"
       v-model="at_steer_axles_value"
@@ -21,16 +22,17 @@
     <p class="pa-0 my-1 font-weight-bold text-h6">Drive Axles</p>
     <p
       v-if="drive_axles_information.message !== undefined"
-      :class="`${drive_axles_information.color}--text font-weight-bold my-0`"
+      :class="`${drive_axles_information.color}--text font-weight-bold my-0 text-h6`"
     >
       {{ drive_axles_information.message }}
     </p>
-    <p v-if="drive_axles_information.message !== undefined">
-      Drive axles weight is {{ actual_weight_at_drive }}
+    <p v-if="drive_axles_information.message !== undefined" class="text-body-1">
+      Drive axles weight is <span class="font-weight-bold" >{{ actual_weight_at_drive }}</span>
     </p>
     <v-text-field
       label="total weight of (steer axles + drive axles)"
       outlined
+      type="number"
       v-model="at_drive_axles_value"
       class="text-h4"
     ></v-text-field>
@@ -39,34 +41,36 @@
   
     <p
       v-if="bridge_axles_information.message !== undefined"
-      :class="`${bridge_axles_information.color}--text font-weight-bold my-0`"
+      :class="`${bridge_axles_information.color}--text font-weight-bold my-0 text-h6`"
     >
       {{ bridge_axles_information.message }}
     </p>
-    <p v-if="bridge_axles_information.message !== undefined">
-      Bridge axles weight is {{ actual_weight_at_bridge }}
+    <p v-if="bridge_axles_information.message !== undefined" class="text-body-1">
+      Bridge axles weight is <span class="font-weight-bold " >{{ actual_weight_at_bridge }}</span>
     </p>
     <v-text-field
       label="total weight of (steer axle + drive axles + bridge axles)"
       outlined
       v-model="at_bridge_axles_value"
       class="text-h4"
+      type="number"
     ></v-text-field>
     <p class="my-1 pa-0 font-weight-bold text-h6">Pup Axles</p>
  
     <p
       v-if="pup_axles_information.message !== undefined"
-      :class="`${pup_axles_information.color}--text font-weight-bold my-0`"
+      :class="`${pup_axles_information.color}--text font-weight-bold my-0 text-h6`"
     >
       {{ pup_axles_information.message }}
     </p>
-    <p v-if="pup_axles_information.message !== undefined">
-      Pup axles weight is {{ actual_weight_at_pup }}
+    <p v-if="pup_axles_information.message !== undefined" class="text-body-1">
+      Pup axles weight is <span class="font-weight-bold" >{{ actual_weight_at_pup }}</span>
     </p>
     <v-text-field
       label="total weight of (steer, drive, bridge and pup)"
       outlined
       v-model="at_pup_axles_value"
+      type="number"
       class="text-h4"
     ></v-text-field>
   </div>
